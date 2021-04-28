@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\TicketsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +13,6 @@ use App\Http\Controllers\TicketsController;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
-Route::apiResource('tikets', TicketsController::class);
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});

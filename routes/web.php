@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+// use App\Room;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return view('room', ['room' => 12]);
+    return view('chat');
 });
+
+// Route::post('messages', function( Illuminate\Http\Request $request) {
+Route::post('messages', function(  Request $request ) {
+
+	App\Events\PrivateChat::dispatch($request->all());
+
+});
+
+// Route::get('/room/{room}', function( App\Room $room) {
+Route::get('/room/{room}', function( ) {
+
+	return view('room', ['room' => 12 ]);
+
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
